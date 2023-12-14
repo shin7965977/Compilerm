@@ -1,42 +1,62 @@
 
 # Digital Advertising Cost-Volume Optimization System
 
-A simple Python application designed to analyze and predict the cost-volume relationship of digital advertising based on the input CSV data. This project is built following the guidelines provided in the Software Development Assignment and integrates multiple tools and techniques learned throughout the course.
+A simple Python application designed to analyze and predict the cost-volume relationship of digital advertising based on the input CSV data & Machine Learning, aiming to optimize budget allocation and enhance ROAS. This project is built following the guidelines provided in the Software Development Assignment and integrates multiple tools and techniques learned throughout the course.
 
 
 ## Table of Contents
 
- - [TBD](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [TBD](https://github.com/matiassingers/awesome-readme)
- - [TBD](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+- [Feature](https://github.com/shin7965977/SRH-berlin-software-engineering#Feature)
+- [Prerequisites](https://github.com/shin7965977/SRH-berlin-software-engineering#Prerequisites)
+- [SOFTWARE ENGINEERING REQ](https://github.com/shin7965977/SRH-berlin-software-engineering#SOFTWARE-ENGINEERING-REQ)
+- [Git Commit History](https://github.com/shin7965977/SRH-berlin-software-engineering#Git-Commit-History)
+- [Project Management Tool](https://github.com/shin7965977/SRH-berlin-software-engineering#Project-Management-Tool)
+- [Build Tool](https://github.com/shin7965977/SRH-berlin-software-engineering#Build-Tool)
+- [UML Diagrams](https://github.com/shin7965977/SRH-berlin-software-engineering#UML-Diagrams)
+- [Unit Tests](https://github.com/shin7965977/SRH-berlin-software-engineering#Unit-Tests)
+- [Clean Code](https://github.com/shin7965977/SRH-berlin-software-engineering#Clean-Code)
 
 
 ## Feature
 
-#### CSV Upload and Reading: 
+- #### CSV Upload and Reading: 
 Enter the path to your CSV file to load data.
 
-#### Data Cleaning and Preprocessing: 
-Auto-format date columns, calculate click-through rates, and more.
+- #### Cost-Volume exploration& visualization : 
+Visualize relationships between exposures, costs, and Buy.
 
-#### Cost-Volume Analysis: 
-Visualize relationships between exposures, costs, and clicks.
-
-#### Cost-Volume Optimization Model: 
+- #### Cost-Volume Optimization Model(MAB): 
 Utilize machine learning to predict clicks based on costs and exposures.
-#### Prediction: 
+
+- #### Prediction: 
 Input new exposure and cost data to get click predictions.
+
 ## Prerequisites
 
-#### Python (latest version recommended)
+#### Python == 3.12.1 
 #### Required libraries:
-pandas,numpy,scikit-learn,matplotlib,seaborn
+
+- matplotlib==3.8.0
+- numpy==1.26.2
+- pandas==2.1.1
+- scikit-learn==1.2.2
+- scipy==1.11.4
+- seaborn==0.12.2
+- statsmodels==0.14.0
 
 
 ## SOFTWARE ENGINEERING REQ
+
 ## Git Commit History
+- [Git Commit History](https://github.com/shin7965977/SRH-berlin-software-engineering/commits/master/)
+
 ## Project Management Tool
+
 ## Build Tool
+#### Visual Studio Code
+
 ## UML Diagrams
+
 ## Unit Tests
+
 ## Clean Code
