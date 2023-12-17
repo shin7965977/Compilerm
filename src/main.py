@@ -29,8 +29,7 @@ def upload_and_read_csv():
 
 if __name__ == "__main__":
     df = upload_and_read_csv()
-    if df is not None:
-        print(df.head())  # Display the first few rows of the DataFrame
+
 
 
 
@@ -43,5 +42,3 @@ random.shuffle(indices)
 
 training_indices = indices[:-index]
 test_indices = indices[-index:]
-
-print(training_indices[:10])
