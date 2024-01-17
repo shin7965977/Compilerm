@@ -32,8 +32,8 @@ for current_date in date_range:
             cpv = np.random.randint(20, 50)
             cpb = np.random.randint(400, 900)
             ad_cost = np.random.randint(6000, 8000)
-            product_cost = 500  # assuming fixed cost
-            product_price = 700  # assuming fixed price
+            product_cost = 120  # assuming fixed cost
+            product_price = 900  # assuming fixed price
             roas = (buy * product_price - ad_cost) / ad_cost
             
             # Append the row to the data
