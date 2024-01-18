@@ -1,8 +1,6 @@
-import numpy as np
-import pandas as pd
 from scipy.stats import beta
 from scipy import stats
-import math
+
 
 def get_positive_float(prompt):
     while True:
@@ -15,6 +13,7 @@ def get_positive_float(prompt):
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+
 def get_positive_int(prompt):
     while True:
         try:
@@ -25,6 +24,7 @@ def get_positive_int(prompt):
                 print("Please enter a number greater than 0.")
         except ValueError:
             print("Invalid input. Please enter a valid integer.")
+
 
 def hypothesis_test_ROI(df, df2):
     product_cost = get_positive_float("Enter product cost: ")
@@ -70,6 +70,7 @@ def hypothesis_test_ROI(df, df2):
         else:
             print("Cannot reject the null hypothesis, there is not enough evidence to suggest that the ROI of the new advertising is significantly higher than that of the old advertising")
 
+
 def hypothesis_test_Buy(df, df2):
 
     grouped_df = df.groupby('date').agg({'ad Cost': 'sum', 'Buy': 'sum'}).reset_index()
@@ -108,4 +109,3 @@ def hypothesis_test_Buy(df, df2):
             print("Reject the null hypothesis, there is sufficient evidence to suggest that the Buy of the new advertising is significantly higher than that of the old advertising")
         else:
             print("Cannot reject the null hypothesis, there is not enough evidence to suggest that the Buy of the new advertising is significantly higher than that of the old advertising")
-

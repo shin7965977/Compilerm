@@ -1,10 +1,10 @@
 import numpy as np
 import pandas as pd
-from scipy.stats import beta
 import math
 import data_visualization
 
 df = pd.read_csv(r"C:\Users\shin7\Desktop\new\data\raw data.csv")
+
 
 def get_positive_float(prompt):
     while True:
@@ -17,6 +17,7 @@ def get_positive_float(prompt):
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+
 def get_positive_int(prompt):
     while True:
         try:
@@ -28,11 +29,12 @@ def get_positive_int(prompt):
         except ValueError:
             print("Invalid input. Please enter a valid integer.")
 
+
 def UCB_algorithm_ROI(df):
     # Data aggregation
     product_cost = get_positive_float("Enter product cost: ")
     product_price = get_positive_float("Enter product price: ")
-    data_visualization.generate_and_save_plots(df,product_cost,product_price)
+    data_visualization.generate_and_save_plots(df, product_cost, product_price)
     grouped_df = df.groupby('ad group').agg({'ad Cost': 'sum', 'Buy': 'sum'}).reset_index()
     grouped_df['ROI'] = ((grouped_df['Buy'] * product_price) - (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])) / (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])
 
@@ -81,7 +83,7 @@ def UCB_algorithm_Buy(df):
     # Data aggregation
     product_cost = get_positive_float("Enter product cost: ")
     product_price = get_positive_float("Enter product price: ")
-    data_visualization.generate_and_save_plots(df,product_cost,product_price)
+    data_visualization.generate_and_save_plots(df, product_cost, product_price)
     grouped_df = df.groupby('ad group').agg({'ad Cost': 'sum', 'Buy': 'sum'}).reset_index()
     grouped_df['ROI'] = ((grouped_df['Buy'] * product_price) - (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])) / (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])
 

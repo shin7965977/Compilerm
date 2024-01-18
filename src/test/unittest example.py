@@ -2,9 +2,10 @@ import unittest
 from unittest.mock import patch
 from io import StringIO
 import sys
-from __main__ import upload_and_read_csv  
-from __main__ import hypothesis_test_ROI, hypothesis_test_Buy  
+import data_visualization
+import hypothesis
 import pandas as pd
+
 
 class TestCSVUpload(unittest.TestCase):
 
@@ -16,7 +17,7 @@ class TestCSVUpload(unittest.TestCase):
         sys.stdin = test_csv
 
         # Call the function
-        result_df = upload_and_read_csv()
+        result_df = data_visualization.upload_and_read_csv()
 
         # Create the expected DataFrame for comparison
         expected_df = pd.DataFrame({"col1": [1, 3], "col2": [2, 4]})
@@ -27,7 +28,7 @@ class TestCSVUpload(unittest.TestCase):
     def test_file_not_found(self):
         # Test for the case where the file does not exist
         sys.stdin = StringIO("nonexistent.csv")
-        result = upload_and_read_csv()
+        result = data_visualization.upload_and_read_csv()
         self.assertIsNone(result)
 
 class TestHypothesis(unittest.TestCase):
@@ -41,7 +42,7 @@ class TestHypothesis(unittest.TestCase):
         df = pd.DataFrame(data)
 
         # Call the test function
-        hypothesis_test_ROI(df, df)
+        hypothesis.hypothesis_test_ROI(df, df)
         # You can add assert statements to verify output or function state
 
     @patch('builtins.input', side_effect=['10', '20'])
@@ -53,7 +54,7 @@ class TestHypothesis(unittest.TestCase):
         df = pd.DataFrame(data)
 
         # Call the test function
-        hypothesis_test_Buy(df, df)
+        hypothesis.hypothesis_test_Buy(df, df)
         # You can add assert statements to verify output or function state
 
 if __name__ == '__main__':

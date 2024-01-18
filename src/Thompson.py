@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 from scipy.stats import beta
 import data_visualization
 
@@ -15,6 +14,7 @@ def get_positive_float(prompt):
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+
 def get_positive_int(prompt):
     while True:
         try:
@@ -25,6 +25,7 @@ def get_positive_int(prompt):
                 print("Please enter a number greater than 0.")
         except ValueError:
             print("Invalid input. Please enter a valid integer.")
+
 
 def Thompson_sampling_algorithm_ROI(df):
     # Data aggregation
@@ -59,6 +60,7 @@ def Thompson_sampling_algorithm_ROI(df):
     grouped_df.rename(columns={'ad Cost': 'Historical Ad Cost', 'Buy': 'Historical Buy', 'ROI': 'Historical Average ROI', 'ad group': 'Ad Group'}, inplace=True)
 
     print(grouped_df)
+
 
 def Thompson_sampling_algorithm_Buy(df):
     # Data aggregation
@@ -95,4 +97,3 @@ def Thompson_sampling_algorithm_Buy(df):
     grouped_df.rename(columns={'ad Cost': 'Historical Ad Cost', 'Buy': 'Historical Buy', 'ROI': 'Historical Average ROI', 'ad group': 'Ad Group'}, inplace=True)
 
     print(grouped_df)
-

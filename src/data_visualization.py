@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import csv
 
 
 def upload_and_read_csv(prompt="Input data path: "):
