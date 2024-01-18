@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from scipy.stats import beta
-
+import data_visualization
 
 
 df = pd.read_csv(r"C:\Users\shin7\Desktop\new\data\raw data.csv")
@@ -33,6 +33,7 @@ def Thompson_sampling_algorithm_ROI(df):
     # Data aggregation
     product_cost = get_positive_float("Enter product cost: ")
     product_price = get_positive_float("Enter product price: ")
+    data_visualization.generate_and_save_plots(df,product_cost,product_price)
     grouped_df = df.groupby('ad group').agg({'ad Cost': 'sum', 'Buy': 'sum'}).reset_index()
     grouped_df['ROI'] = ((grouped_df['Buy'] * product_price) - (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])) / (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])
 
@@ -66,6 +67,7 @@ def Thompson_sampling_algorithm_Buy(df):
     # Data aggregation
     product_cost = get_positive_float("Enter product cost: ")
     product_price = get_positive_float("Enter product price: ")
+    data_visualization.generate_and_save_plots(df,product_cost,product_price)
     grouped_df = df.groupby('ad group').agg({'ad Cost': 'sum', 'Buy': 'sum'}).reset_index()
     grouped_df['ROI'] = ((grouped_df['Buy'] * product_price) - (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])) / (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])
 

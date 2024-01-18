@@ -2,9 +2,21 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
-def generate_and_save_plots(df):
+df = pd.read_csv(r"C:\Users\shin7\Desktop\new\data\raw data 2.csv")
+
+def generate_and_save_plots(df, product_cost, product_price):
     # Convert the date into the correct format
     df['date'] = pd.to_datetime(df['date'])
+
+    # 不管 'ROI' 列是否存在，都删除并重新创建 'ROI' 列
+    # 删除 'ROI' 列（如果存在）
+    if 'ROI' in df.columns:
+        df.drop('ROI', axis=1, inplace=True)
+
+    # 然后重新创建 'ROI' 列，并根据给定公式计算值
+    df['ROI'] = ((df['Buy'] * product_price) - 
+                (product_cost * df['Buy'] + df['ad Cost'])) / \
+                (product_cost * df['Buy'] + df['ad Cost'])
 
     # Create a chart containing a subplot with one row and three columns.
     fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(20, 5))
@@ -58,4 +70,4 @@ def generate_and_save_plots(df):
     plt.tight_layout()
     plt.show()
 
-# generate_and_save_plots(df)  
+print(generate_and_save_plots(df,120,900))

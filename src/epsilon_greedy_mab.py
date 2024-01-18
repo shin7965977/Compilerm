@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import random
+import data_visualization
 
 def get_positive_float(prompt):
     while True:
@@ -42,6 +43,7 @@ def epsilon_greedy_mab_ROI(df):
     product_cost = get_positive_float("Enter product cost: ")
     product_price = get_positive_float("Enter product price: ")
 
+    data_visualization.generate_and_save_plots(df,product_cost,product_price)
     # 重新计算ROI
     grouped_df['ROI'] = ((grouped_df['Buy'] * product_price) - (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])) / (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])
     grouped_df = grouped_df.reset_index()
@@ -101,6 +103,7 @@ def epsilon_greedy_mab_Buy(df):
     grouped_df = df.groupby('ad group').agg({'ad Cost': 'sum', 'Buy': 'sum'})
     product_cost = get_positive_float("Enter product cost: ")
     product_price = get_positive_float("Enter product price: ")
+    data_visualization.generate_and_save_plots(df,product_cost,product_price)
     grouped_df = grouped_df.reset_index()
     grouped_df.rename(columns={'ad group': 'Ad Group'}, inplace=True)
     # 重新计算ROI

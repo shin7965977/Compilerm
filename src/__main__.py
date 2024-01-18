@@ -9,8 +9,6 @@ import Hypothesis_test
 import numpy as np
 from scipy.stats import beta
 from scipy import stats
-import math
-import data_visualization
 
 
 def upload_and_read_csv(prompt="Input data path: "):
@@ -58,7 +56,6 @@ if __name__ == "__main__":
     
         df = upload_and_read_csv()
         
-        data_visualization.generate_and_save_plots(df)
 
         if goal_choice == "1":
             if algo_choice == "1":
