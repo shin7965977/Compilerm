@@ -14,7 +14,6 @@ import data_visualization
 
 if __name__ == "__main__":
     choice = input("Please select the function to execute, Function 1: MAB Machine Learning, Function 2: Hypothesis Testing (Enter 1 or 2): ")
-    
     while choice not in ["1", "2"]:
         print("Invalid input, please enter 1 or 2.")
         choice = input("Please select the function to execute, Function 1: MAB Machine Learning, Function 2: Hypothesis Testing (Enter 1 or 2): ")
@@ -66,7 +65,3 @@ if __name__ == "__main__":
         elif hypothesis_choice == "2":
             # Perform hypothesis testing for Buy
             Hypothesis_test.hypothesis_test_Buy(df, df2)
-
-
-
-

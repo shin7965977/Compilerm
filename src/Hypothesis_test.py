@@ -1,4 +1,3 @@
-from scipy.stats import beta
 from scipy import stats
 
 
