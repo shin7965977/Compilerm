@@ -4,6 +4,7 @@ from io import StringIO
 import sys
 from __main__ import upload_and_read_csv  
 from __main__ import hypothesis_test_ROI, hypothesis_test_Buy  
+import pandas as pd
 
 class TestCSVUpload(unittest.TestCase):
 

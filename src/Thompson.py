@@ -4,9 +4,6 @@ from scipy.stats import beta
 import data_visualization
 
 
-df = pd.read_csv(r"C:\Users\shin7\Desktop\new\data\raw data.csv")
-
-
 def get_positive_float(prompt):
     while True:
         try:

@@ -9,32 +9,8 @@ import Hypothesis_test
 import numpy as np
 from scipy.stats import beta
 from scipy import stats
+import data_visualization
 
-
-def upload_and_read_csv(prompt="Input data path: "):
-    # Obtain the CSV file path from the user.
-    file_path = input(prompt)
-
-    try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            # Read the file contents using csv.reader.
-            csv_reader = csv.reader(file)
-            # Convert csv_reader to a list of lists.
-            data_list = list(csv_reader)
-            # Create a DataFrame from the list of lists.
-            # The first row of the CSV is typically the header, which we use for column names.
-            df = pd.DataFrame(data_list[1:], columns=data_list[0])
-            # Convert columns to appropriate data types.
-            df = df.apply(pd.to_numeric, errors='ignore')
-            pd.set_option('display.width', 1000)
-            return df
-
-    except FileNotFoundError:
-        print(f"Can't find CSV: {file_path}")
-        return None
-    except Exception as e:
-        print(f"An error occurred when loading data: {e}")
-        return None
 
 if __name__ == "__main__":
     choice = input("Please select the function to execute, Function 1: MAB Machine Learning, Function 2: Hypothesis Testing (Enter 1 or 2): ")
@@ -54,7 +30,7 @@ if __name__ == "__main__":
             print("Invalid input, please enter 1, 2, or 3.")
             algo_choice = input("Please choose the machine learning algorithm to use, 1.ε-greedy 2.Thompson Sampling 3.Upper Confidence Bound (UCB) (Enter 1, 2, 3): ")
     
-        df = upload_and_read_csv()
+        df = data_visualization.upload_and_read_csv()
         
 
         if goal_choice == "1":
@@ -81,8 +57,8 @@ if __name__ == "__main__":
             hypothesis_choice = input("Please choose the target for hypothesis testing: 1.ROI 2.Buy (Enter 1 or 2): ")
 
         # Assuming the upload_and_read_csv function returns a DataFrame
-        df = upload_and_read_csv("Please enter the data path before machine learning: ")  # Assuming this is the first data set
-        df2 = upload_and_read_csv("Please enter the data path after machine learning: ")  # Assuming this is the second data set for comparison
+        df = data_visualization.upload_and_read_csv("Please enter the data path before machine learning: ")  # Assuming this is the first data set
+        df2 = data_visualization.upload_and_read_csv("Please enter the data path after machine learning: ")  # Assuming this is the second data set for comparison
 
         if hypothesis_choice == "1":
             # Perform hypothesis testing for ROI
