@@ -33,5 +33,5 @@ jobs:
         run: pip install pytest
 
       - name: Run pytest
-        working-directory: SRH-berlin-software-engineering/src/test/unittest example.py
+        working-directory: src/test  # 修改为指向包含测试的目录
         run: pytest
