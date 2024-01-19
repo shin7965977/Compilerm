@@ -15,7 +15,6 @@ class TestCSVUpload(unittest.TestCase):
         result_df = data_visualization.upload_and_read_csv(csv_file_path)
 
         # Create the expected DataFrame for comparison
-        # Make sure to match the expected data with the actual data in the CSV file
         expected_df = pd.DataFrame({"col1": [1, 3], "col2": [2, 4]})
 
         # Check if the result matches the expectation
@@ -36,27 +35,21 @@ class TestHypothesis(unittest.TestCase):
 
     @patch('builtins.input', side_effect=['10', '20'])
     def test_hypothesis_test_ROI(self, mock_inputs):
-        # Create test data
         data = {'date': ['2021-01-01', '2021-01-02'],
                 'ad Cost': [100, 150],
                 'Buy': [10, 20]}
         df = pd.DataFrame(data)
 
-        # Call the test function
         Hypothesis_test.hypothesis_test_ROI(df, df)
-        # You can add assert statements to verify output or function state
 
     @patch('builtins.input', side_effect=['10', '20'])
     def test_hypothesis_test_Buy(self, mock_inputs):
-        # Create test data
         data = {'date': ['2021-01-01', '2021-01-02'],
                 'ad Cost': [100, 150],
                 'Buy': [10, 20]}
         df = pd.DataFrame(data)
 
-        # Call the test function
         Hypothesis_test.hypothesis_test_Buy(df, df)
-        # You can add assert statements to verify output or function state
 
 
 if __name__ == '__main__':
