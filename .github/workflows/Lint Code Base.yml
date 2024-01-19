@@ -32,6 +32,9 @@ jobs:
       - name: Install pytest
         run: pip install pytest
 
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/src" >> $GITHUB_ENV
+
       - name: Run pytest
-        working-directory: src/test  # 修改为指向包含测试的目录
+        working-directory: src/test
         run: pytest
