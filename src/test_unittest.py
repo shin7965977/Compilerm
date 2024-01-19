@@ -1,7 +1,5 @@
 import unittest
 from unittest.mock import patch
-from io import StringIO
-import sys
 import data_visualization
 import Hypothesis_test
 import pandas as pd
@@ -9,27 +7,30 @@ import pandas as pd
 
 class TestCSVUpload(unittest.TestCase):
 
-    def test_upload_and_read_csv(self):
-        # Create a mock CSV file
-        test_csv = StringIO("col1,col2\n1,2\n3,4")
-        
-        # Modify standard input to simulate user input for the file path
-        sys.stdin = test_csv
+    def test_upload_and_read_csv_with_real_file(self):
+        # Specify the actual CSV file path
+        csv_file_path = 'data/raw data 2.csv'
 
-        # Call the function
-        result_df = data_visualization.upload_and_read_csv()
+        # Call the function with the actual file
+        result_df = data_visualization.upload_and_read_csv(csv_file_path)
 
         # Create the expected DataFrame for comparison
+        # Make sure to match the expected data with the actual data in the CSV file
         expected_df = pd.DataFrame({"col1": [1, 3], "col2": [2, 4]})
-        
+
         # Check if the result matches the expectation
         pd.testing.assert_frame_equal(result_df, expected_df)
 
     def test_file_not_found(self):
-        # Test for the case where the file does not exist
-        sys.stdin = StringIO("nonexistent.csv")
-        result = data_visualization.upload_and_read_csv()
-        self.assertIsNone(result)
+        # Specify an invalid file path
+        csv_file_path = 'data/nonexistent.csv'
+
+        # Call the function which should handle the file not found case
+        result_df = data_visualization.upload_and_read_csv(csv_file_path)
+
+        # The result should be None if the file is not found
+        self.assertIsNone(result_df)
+
 
 class TestHypothesis(unittest.TestCase):
 
@@ -56,6 +57,7 @@ class TestHypothesis(unittest.TestCase):
         # Call the test function
         Hypothesis_test.hypothesis_test_Buy(df, df)
         # You can add assert statements to verify output or function state
+
 
 if __name__ == '__main__':
     unittest.main()
