@@ -3,7 +3,7 @@ from unittest.mock import patch
 from io import StringIO
 import sys
 import data_visualization
-import hypothesis
+import Hypothesis_test
 import pandas as pd
 
 
@@ -42,7 +42,7 @@ class TestHypothesis(unittest.TestCase):
         df = pd.DataFrame(data)
 
         # Call the test function
-        hypothesis.hypothesis_test_ROI(df, df)
+        Hypothesis_test.hypothesis_test_ROI(df, df)
         # You can add assert statements to verify output or function state
 
     @patch('builtins.input', side_effect=['10', '20'])
@@ -54,7 +54,7 @@ class TestHypothesis(unittest.TestCase):
         df = pd.DataFrame(data)
 
         # Call the test function
-        hypothesis.hypothesis_test_Buy(df, df)
+        Hypothesis_test.hypothesis_test_Buy(df, df)
         # You can add assert statements to verify output or function state
 
 if __name__ == '__main__':
