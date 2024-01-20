@@ -1,10 +1,8 @@
 ### CSV upload
 import pandas as pd
-import csv
 import epsilon_greedy_mab
 import Thompson
 import UCB
-import matplotlib
 import Hypothesis_test
 import numpy as np
 from scipy.stats import beta

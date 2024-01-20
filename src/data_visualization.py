@@ -5,29 +5,28 @@ import csv
 
 
 def upload_and_read_csv(prompt="Input data path: "):
-    # Obtain the CSV file path from the user.
-    file_path = input(prompt)
+    while True:
+        # Obtain the CSV file path from the user.
+        file_path = input(prompt)
 
-    try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            # Read the file contents using csv.reader.
-            csv_reader = csv.reader(file)
-            # Convert csv_reader to a list of lists.
-            data_list = list(csv_reader)
-            # Create a DataFrame from the list of lists.
-            # The first row of the CSV is typically the header, which we use for column names.
-            df = pd.DataFrame(data_list[1:], columns=data_list[0])
-            # Convert columns to appropriate data types.
-            df = df.apply(pd.to_numeric, errors='ignore')
-            pd.set_option('display.width', 1000)
-            return df
+        try:
+            with open(file_path, 'r', encoding='utf-8') as file:
+                # Read the file contents using csv.reader.
+                csv_reader = csv.reader(file)
+                # Convert csv_reader to a list of lists.
+                data_list = list(csv_reader)
+                # Create a DataFrame from the list of lists.
+                # The first row of the CSV is typically the header, which we use for column names.
+                df = pd.DataFrame(data_list[1:], columns=data_list[0])
+                # Convert columns to appropriate data types.
+                df = df.apply(pd.to_numeric, errors='ignore')
+                pd.set_option('display.width', 1000)
+                return df
 
-    except FileNotFoundError:
-        print(f"Can't find CSV: {file_path}")
-        return None
-    except Exception as e:
-        print(f"An error occurred when loading data: {e}")
-        return None
+        except FileNotFoundError:
+            print(f"Can't find CSV: {file_path}")
+        except Exception as e:
+            print(f"An error occurred when loading data: {e}")
 
 def generate_and_save_plots(df, product_cost, product_price):
     # Convert the date into the correct format

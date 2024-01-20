@@ -3,8 +3,6 @@ import pandas as pd
 import math
 import data_visualization
 
-df = pd.read_csv(r"C:\Users\shin7\Desktop\new\data\raw data.csv")
-
 
 def get_positive_float(prompt):
     while True:
@@ -34,7 +32,6 @@ def UCB_algorithm_ROI(df):
     # Data aggregation
     product_cost = get_positive_float("Enter product cost: ")
     product_price = get_positive_float("Enter product price: ")
-    data_visualization.generate_and_save_plots(df, product_cost, product_price)
     grouped_df = df.groupby('ad group').agg({'ad Cost': 'sum', 'Buy': 'sum'}).reset_index()
     grouped_df['ROI'] = ((grouped_df['Buy'] * product_price) - (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])) / (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])
 
@@ -115,7 +112,7 @@ def UCB_algorithm_Buy(df):
         # Allocate budget and update rewards and trials based on 'Buy'
         allocated_budget_ucb[chosen_ad_group] += allocation
         trials[chosen_ad_group] += 1
-        rewards[chosen_ad_group] += grouped_df.loc[chosen_ad_group, 'Buy']
+        rewards[chosen_ad_group] += math.log(grouped_df.loc[chosen_ad_group, 'Buy'] + 1)
 
     # Update DataFrame
     grouped_df['Counts'] = trials
