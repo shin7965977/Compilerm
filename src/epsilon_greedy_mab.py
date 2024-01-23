@@ -37,127 +37,112 @@ def get_positive_float_epsilon(prompt):
             print("Invalid input. Please enter a valid number.")
 
 def epsilon_greedy_mab_ROI(df):
-    # 基本預處理和設置MAB模型
-    # 按廣告組分組以獲得匯總指標
+    # Basic preprocessing and setting up the MAB model
+    # Group by ad group to get aggregate metrics
     grouped_df = df.groupby('ad group').agg({'ad Cost': 'sum', 'Buy': 'sum'})
     product_cost = get_positive_float("Enter product cost: ")
     product_price = get_positive_float("Enter product price: ")
 
     data_visualization.generate_and_save_plots(df,product_cost,product_price)
-    # 重新计算ROI
+    # Recalculate ROI
     grouped_df['ROI'] = ((grouped_df['Buy'] * product_price) - (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])) / (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])
     grouped_df = grouped_df.reset_index()
     grouped_df.rename(columns={'ad group': 'Ad Group'}, inplace=True)
-    # 定義廣告組的數量（MAB中的臂）
+    # Define the number of ad groups (arms in the MAB)
     n_arms = grouped_df.shape[0]
     arms = grouped_df.index.tolist()
 
-    # 初始化ε-greedy算法的參數
-    epsilon = get_positive_float_epsilon("Enter epsilon (a number between 0 and 1): ")  # 探索率
-    n_rounds = get_positive_int("Enter number of rounds: ")  # 模擬回合數
-    total_budget = get_positive_int("Enter number of budget: ")  # 所有組的總廣告成本
+    # Initialize parameters for the ε-greedy algorithm
+    epsilon = get_positive_float_epsilon("Enter epsilon (a number between 0 and 1): ")  # Exploration rate
+    n_rounds = get_positive_int("Enter number of rounds: ")  # Number of simulation rounds
+    total_budget = get_positive_int("Enter total budget: ")  # Total ad cost for all groups
 
-    # 初始化數組以存儲每個臂被玩的次數及其獎勵
+    # Initialize arrays to store the number of times each arm is played and their rewards
     counts = np.zeros(n_arms)
     rewards = np.zeros(n_arms)
 
-    # 根據ε-greedy算法選擇臂的函數
+    # Function to choose an arm based on the ε-greedy algorithm
     def choose_arm(epsilon, counts):
         if random.random() > epsilon:
-            # 利用：選擇平均獎勵最高的臂
-            average_rewards = rewards / (counts + 1)  # 加1以避免除以零
+            # Exploit: choose the arm with the highest average reward
+            average_rewards = rewards / (counts + 1)  # Add 1 to avoid division by zero
             return np.argmax(average_rewards)
         else:
-            # 探索：選擇一個隨機臂
+            # Explore: choose a random arm
             return np.random.randint(0, n_arms)
 
-    # 模擬MAB模型
+    # Simulate the MAB model
     for i in range(n_rounds):
         chosen_arm = choose_arm(epsilon, counts)
-        # 模擬獎勵 - 在這裡我們使用歷史ROI作為獎勵的代理
+        # Simulate reward - here we use historical ROI as a proxy for the reward
         reward = grouped_df.iloc[chosen_arm]['ROI']
-        # 更新次數和獎勵
+        # Update counts and rewards
         counts[chosen_arm] += 1
         rewards[chosen_arm] += reward
 
-    # 根據模型計算最終分配
+    # Calculate the final allocation based on the model
     final_allocation = (counts / counts.sum()) * total_budget
 
     # Append allocation results to the dataframe
     grouped_df['Counts'] = counts
     grouped_df['Budget Allocation'] = final_allocation
-    # Change column's name
-    grouped_df.rename(columns={'ad Cost': 'Historical Ad Cost'}, inplace=True)
-    grouped_df.rename(columns={'Buy': 'Historical Buy'}, inplace=True)
-    grouped_df.rename(columns={'ROI': 'Historical Average ROI'}, inplace=True)
-    grouped_df.rename(columns={'ROI': 'Historical Average ROI'}, inplace=True)
+    # Change column names
+    grouped_df.rename(columns={'ad Cost': 'Historical Ad Cost', 'Buy': 'Historical Buy', 'ROI': 'Historical Average ROI'}, inplace=True)
     
-
-
-
     print(grouped_df)
 
 def epsilon_greedy_mab_Buy(df):
-    # 基本預處理和設置MAB模型
-    # 按廣告組分組以獲得匯總指標
+    # Basic preprocessing and setting up the MAB model
+    # Group by ad group to get aggregate metrics
     grouped_df = df.groupby('ad group').agg({'ad Cost': 'sum', 'Buy': 'sum'})
     product_cost = get_positive_float("Enter product cost: ")
     product_price = get_positive_float("Enter product price: ")
     data_visualization.generate_and_save_plots(df,product_cost,product_price)
     grouped_df = grouped_df.reset_index()
     grouped_df.rename(columns={'ad group': 'Ad Group'}, inplace=True)
-    # 重新计算ROI
+    # Recalculate ROI
     grouped_df['ROI'] = ((grouped_df['Buy'] * product_price) - (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])) / (product_cost * grouped_df['Buy'] + grouped_df['ad Cost'])
 
-    # 定義廣告組的數量（MAB中的臂）
+    # Define the number of ad groups (arms in the MAB)
     n_arms = grouped_df.shape[0]
     arms = grouped_df.index.tolist()
 
-    # 初始化ε-greedy算法的參數
-    epsilon = get_positive_float_epsilon("Enter epsilon (a number between 0 and 1): ")  # 探索率
-    n_rounds = get_positive_int("Enter number of rounds: ")  # 模擬回合數
-    total_budget = get_positive_int("Enter number of budget: ")  # 所有組的總廣告成本
+    # Initialize parameters for the ε-greedy algorithm
+    epsilon = get_positive_float_epsilon("Enter epsilon (a number between 0 and 1): ")  # Exploration rate
+    n_rounds = get_positive_int("Enter number of rounds: ")  # Number of simulation rounds
+    total_budget = get_positive_int("Enter total budget: ")  # Total ad cost for all groups
 
-    # 初始化數組以存儲每個臂被玩的次數及其獎勵
+    # Initialize arrays to store the number of times each arm is played and their rewards
     counts = np.zeros(n_arms)
     rewards = np.zeros(n_arms)
 
-    # 根據ε-greedy算法選擇臂的函數
+    # Function to choose an arm based on the ε-greedy algorithm
     def choose_arm(epsilon, counts):
         if random.random() > epsilon:
-            # 利用：選擇平均獎勵最高的臂
-            average_rewards = rewards / (counts + 1)  # 加1以避免除以零
+            # Exploit: choose the arm with the highest average reward
+            average_rewards = rewards / (counts + 1)  # Add 1 to avoid division by zero
             return np.argmax(average_rewards)
         else:
-            # 探索：選擇一個隨機臂
+            # Explore: choose a random arm
             return np.random.randint(0, n_arms)
-        
 
-        # 模擬MAB模型
+    # Simulate the MAB model
     for i in range(n_rounds):
         chosen_arm = choose_arm(epsilon, counts)
-        # 模擬獎勵 - 在這裡我們使用歷史Buy作為獎勵的代理
+        # Simulate reward - here we use historical Buy as a proxy for the reward
         reward = grouped_df.iloc[chosen_arm]['Buy']
-        # 更新次數和獎勵
+        # Update counts and rewards
         counts[chosen_arm] += 1
-        rewards[chosen_arm] += reward  # 注意這裡是累加Buy
-        # 累加选择的臂和奖励
+        rewards[chosen_arm] += reward  # Note here we are accumulating Buy
+        # Accumulate the chosen arm and reward
 
-
-    # 根據模型計算最終分配
+    # Calculate the final allocation based on the model
     final_allocation = (counts / counts.sum()) * total_budget
 
     # Append allocation results to the dataframe
     grouped_df['Counts'] = counts
     grouped_df['Budget Allocation'] = final_allocation
-    # Change column's name
-    grouped_df.rename(columns={'ad Cost': 'Historical Ad Cost'}, inplace=True)
-    grouped_df.rename(columns={'Buy': 'Historical Buy'}, inplace=True)
-    grouped_df.rename(columns={'ROI': 'Historical Average ROI'}, inplace=True)
-    grouped_df.rename(columns={'ROI': 'Historical Average ROI'}, inplace=True)
+    # Change column names
+    grouped_df.rename(columns={'ad Cost': 'Historical Ad Cost', 'Buy': 'Historical Buy', 'ROI': 'Historical Average ROI'}, inplace=True)
     
-
-
-    
-
     print(grouped_df)

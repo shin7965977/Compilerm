@@ -23,14 +23,13 @@ A simple Python application designed to analyze and predict the cost-volume rela
 Enter the path to your CSV file to load data.
 
 - #### Cost-Volume exploration& visualization : 
-Visualize relationships between exposures, costs, and Buy.
+Visualize relationships between ROI, costs, and Buy.
 
 - #### Cost-Volume Optimization Model(MAB): 
-Utilize machine learning to predict clicks based on costs and exposures.
+We can use Multi-Armed Bandit (MAB) strategies for advertising budget allocation by analyzing past performance reports, thereby achieving maximization of ROI or BUY.
 
-- #### Prediction: 
-Input new exposure and cost data to get click predictions.
-
+- #### hypothesis testing: 
+Hypothesis testing can be used to determine whether the effectiveness of digital advertising has grown due to the implementation of machine learning.
 ## Prerequisites
 
 #### Python == 3.12.1 
@@ -46,6 +45,10 @@ Input new exposure and cost data to get click predictions.
 
 
 ## SOFTWARE ENGINEERING REQ
+- #### Compilerm must be able to upload CSV files.
+- #### Compilerm must visualize the data in the CSV files into line graphs, box plots, and scatter plots.
+- #### Compilerm must be capable of executing three machine learning methods: Thompson Sampling, epsilon-greedy, and Upper Confidence Bound (UCB).
+- #### Compilerm must be able to perform hypothesis testing. 
 
 ## Git Commit History
 - [Git Commit History](https://github.com/shin7965977/SRH-berlin-software-engineering/commits/master/)
@@ -53,7 +56,24 @@ Input new exposure and cost data to get click predictions.
 ## Project Management Tool
 
 ## Build Tool
+
+## IDE
+
 #### Visual Studio Code
+Ctrl + P:
+Function: Quickly open files.
+
+Ctrl + /:
+Function: Comment or uncomment the current line or selected lines of code.
+
+Ctrl + H:
+Function: Perform a global search and replace across the entire workspace.
+
+F2:
+Function: Rename variables or functions.
+
+Ctrl + `:
+Function: Open or close the integrated terminal.
 
 ## UML Diagrams
 
