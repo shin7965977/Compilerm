@@ -1,8 +1,11 @@
 
 # Digital Advertising Cost-Volume Optimization System
 
-A simple Python application designed to analyze and predict the cost-volume relationship of digital advertising based on the input CSV data & Machine Learning, aiming to optimize budget allocation and enhance ROAS. This project is built following the guidelines provided in the Software Development Assignment and integrates multiple tools and techniques learned throughout the course.
+A simple Python application designed to analyze and predict the cost-volume relationship of digital advertising based on the input CSV data & Machine Learning, aiming to optimize budget allocation and enhance ROI. This project is built following the guidelines provided in the Software Development Assignment and integrates multiple tools and techniques learned throughout the course.
 
+installing dependencies: pip install -r requirements.txt
+If you don't have raw data of advertisement, you can use my [data] (https://github.com/shin7965977/SRH-berlin-software-engineering/tree/master/data)
+start the program: python src/__main__.py
 
 ## Table of Contents
 
@@ -32,16 +35,16 @@ We can use Multi-Armed Bandit (MAB) strategies for advertising budget allocation
 Hypothesis testing can be used to determine whether the effectiveness of digital advertising has grown due to the implementation of machine learning.
 ## Prerequisites
 
-#### Python == 3.12.1 
+#### Python == 3.12
 #### Required libraries:
 
-- matplotlib==3.8.0
-- numpy==1.26.2
-- pandas==2.1.1
-- scikit-learn==1.2.2
-- scipy==1.11.4
-- seaborn==0.12.2
-- statsmodels==0.14.0
+- matplotlib
+- numpy
+- pandas
+- scikit-learn
+- scipy
+- seaborn
+- statsmodels
 
 
 ## SOFTWARE ENGINEERING REQ
@@ -54,6 +57,7 @@ Hypothesis testing can be used to determine whether the effectiveness of digital
 - [Git Commit History](https://github.com/shin7965977/SRH-berlin-software-engineering/commits/master/)
 
 ## Project Management Tool
+- [Project Management Tool](https://github.com/shin7965977/SRH-berlin-software-engineering/tree/master/Requirements%20Engineering))
 
 ## Build Tool
 
