@@ -63,6 +63,7 @@ Hypothesis testing can be used to determine whether the effectiveness of digital
 
 ## Build Tool
 - [Build Tool](https://github.com/shin7965977/SRH-berlin-software-engineering/tree/master/.github/workflows)
+- [![Lint Code Base and Run Tests](https://github.com/shin7965977/Compilerm/actions/workflows/Lint%20Code%20Base.yml/badge.svg)](https://github.com/shin7965977/Compilerm/actions/workflows/Lint%20Code%20Base.yml)
 ## IDE
 
 #### Visual Studio Code
