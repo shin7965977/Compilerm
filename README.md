@@ -3,11 +3,11 @@
 
 A simple Python application designed to analyze and predict the cost-volume relationship of digital advertising based on the input CSV data & Machine Learning, aiming to optimize budget allocation and enhance ROI. This project is built following the guidelines provided in the Software Development Assignment and integrates multiple tools and techniques learned throughout the course.
 
-installing dependencies: pip install -r requirements.txt
+1.installing dependencies: pip install -r requirements.txt
 
-If you don't have raw data of advertisement, you can use my [data](https://github.com/shin7965977/SRH-berlin-software-engineering/tree/master/data)
+2.If you don't have raw data of advertisement, you can use my [data](https://github.com/shin7965977/SRH-berlin-software-engineering/tree/master/data)
 
-start the program: python src/__main__.py
+3.start the program: python src/__main__.py
 
 ## Table of Contents
 
@@ -59,10 +59,10 @@ Hypothesis testing can be used to determine whether the effectiveness of digital
 - [Git Commit History](https://github.com/shin7965977/SRH-berlin-software-engineering/commits/master/)
 
 ## Project Management Tool
-- [Project Management Tool](https://github.com/shin7965977/SRH-berlin-software-engineering/tree/master/Requirements%20Engineering))
+- [Project Management Tool](https://github.com/shin7965977/SRH-berlin-software-engineering/tree/master/Requirements%20Engineering)
 
 ## Build Tool
-
+- [Build Tool](https://github.com/shin7965977/SRH-berlin-software-engineering/tree/master/.github/workflows)
 ## IDE
 
 #### Visual Studio Code
@@ -82,7 +82,10 @@ Ctrl + `:
 Function: Open or close the integrated terminal.
 
 ## UML Diagrams
+- [UML Diagrams](https://github.com/shin7965977/SRH-berlin-software-engineering/tree/master/UML)
 
 ## Unit Tests
+- [Unit Tests](https://github.com/shin7965977/SRH-berlin-software-engineering/blob/master/src/test_unittest.py)
 
 ## Clean Code
+- [Clean Code](https://github.com/shin7965977/SRH-berlin-software-engineering/blob/master/Clean%20Code%20Development%20-%20Cheatsheet.pdf)
