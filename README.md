@@ -9,6 +9,8 @@ A simple Python application designed to analyze and predict the cost-volume rela
 
 3.start the program: python src/__main__.py
 
+Note:When you need to input product_cost and product_price, please enter 120 and 900 because, based on the current available data, the product price and cost are fixed at 120 and 900. If there are other digital advertising performance reports available for input, you can adjust product_cost and product_price to the corresponding numbers. However, the analysis currently supports a single product.
+
 ## Table of Contents
 
 - [Feature](https://github.com/shin7965977/SRH-berlin-software-engineering#Feature)
